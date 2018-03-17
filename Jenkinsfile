@@ -8,6 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+		sh 'export DOCKER_API_VERSION=1.25'
                 sh 'mvn -B -DskipTests clean package'
             }
         }
