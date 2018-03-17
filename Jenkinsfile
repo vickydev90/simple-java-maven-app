@@ -1,14 +1,13 @@
 pipeline {
     agent {
         docker {
-            image 'maven:3-alpine'
+            image 'maven:alpine'
             args '-v /root/.m2:/root/.m2'
         }
     }
     stages {
         stage('Build') {
             steps {
-		sh 'export DOCKER_API_VERSION=1.25'
                 sh 'mvn -B -DskipTests clean package'
             }
         }
